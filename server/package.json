@@ -3,6 +3,9 @@
   "version": "0.0.1",
   "description": "node api server",
   "main": "index.js",
+  "scripts": {
+    "serve": "nodemon index.js"
+  },
   "repository": "https://github.com/yayxs/node-vue-starter",
   "author": "yayxs",
   "license": "MIT"
