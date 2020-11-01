@@ -22,6 +22,7 @@ import {
   Input,
   Message,
   MessageBox,
+  Option,
 } from "element-ui";
 Vue.prototype.$ELEMENT = { size: "small", zIndex: 3000 };
 Vue.component(Button.name, Button);
@@ -43,6 +44,8 @@ Vue.use(Card);
 Vue.use(Form);
 Vue.use(FormItem);
 Vue.use(Input);
+Vue.use(Select);
+Vue.use(Option);
 /* 或写为
  * Vue.use(Button)
  * Vue.use(Select)

@@ -43,6 +43,10 @@ export default {
           label: "ID",
         },
         {
+          prop: "parent.name",
+          label: "上级分类",
+        },
+        {
           prop: "name",
           label: "分类名称",
         },
@@ -57,7 +61,7 @@ export default {
       this.fetch();
     },
     async fetch() {
-      const res = await this.$http.get(`categroies/list`);
+      const res = await this.$http.get(`categroies`);
       this.tableData = res.data || [];
     },
     async handleDel(row) {

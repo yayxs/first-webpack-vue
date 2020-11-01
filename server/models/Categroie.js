@@ -6,6 +6,10 @@ const CategorySchema = new Schema({
   name: {
     type: String,
   },
+  parent: {
+    type: mongoose.SchemaTypes.ObjectId,
+    ref: "Category",
+  },
 });
 
-module.exports = Category = mongoose.model("category", CategorySchema);
+module.exports = Category = mongoose.model("Category", CategorySchema);

@@ -1,44 +1,54 @@
 module.exports = (app) => {
   const express = require("express");
   const router = express.Router();
-  const Category = require("../../models/Category");
-  const {
-    FETCH_CATE,
-    SAVA_CATE,
-    FIND_UPDATE_CATE,
-  } = require("../../api/admin");
-  router.post(SAVA_CATE, async (req, res) => {
-    const model = await Category.create(req.body);
+  // const Category = require("../../models/Category");
+  // const { FETCH_CREATE, FIND_UPDATE } = require("../../api/admin");
+  router.post(`/`, async ({ Model, body }, res) => {
+    const model = await Model.create(body);
     res.send(model);
   });
-  router.get(FETCH_CATE, async (req, res) => {
-    const lists = await Category.find().limit(10);
+  router.get(`/`, async (req, res) => {
+    const { Model } = req;
+    const queryOptions = {};
+
+    Model.modelName === "Category" && (queryOptions.populate = "parent");
+
+    const lists = await Model.find().setOptions(queryOptions).limit(10);
     res.send(lists);
   });
 
-  router.get(FIND_UPDATE_CATE, async (req, res) => {
-    const { id } = req.params;
-    const item = await Category.findById(id);
+  router.get(`/:id`, async (req, res) => {
+    const {
+      params: { id },
+      Model,
+    } = req;
+    const item = await Model.findById(id);
     res.send(item);
   });
-  router.put(FIND_UPDATE_CATE, async (req, res) => {
+  router.put(`/:id`, async (req, res) => {
     const { id } = req.params;
-    const { body } = req;
-    const model = await Category.findByIdAndUpdate(id, body);
+    const { body, Model } = req;
+    const model = await Model.findByIdAndUpdate(id, body);
     res.send(model);
   });
 
-  router.delete(FIND_UPDATE_CATE, async (req, res) => {
+  router.delete(`/:id`, async (req, res) => {
     const { id } = req.params;
-    const { body } = req;
-    console.log(id);
-    console.log(body);
+    const { body, Model } = req;
 
-    await Category.findByIdAndRemove(id, body);
+    await Model.findByIdAndRemove(id, body);
     res.send({
       success: true,
     });
   });
 
-  app.use("/admin/api", router);
+  app.use(
+    "/admin/api/rest/:resources",
+    (req, res, next) => {
+      const modelName = require("inflection").classify(req.params.resources);
+      req.Model = require(`../../models/${modelName}`);
+      next();
+    },
+    router
+  );
 };

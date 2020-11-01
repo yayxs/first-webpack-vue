@@ -13,11 +13,28 @@
         :inline="false"
         size="normal"
       >
+        <el-form-item label="上级分类">
+          <el-select
+            v-model="formModel.parent"
+            value-key=""
+            placeholder=""
+            clearable
+            filterable
+          >
+            <el-option
+              v-for="item in options"
+              :key="item._id"
+              :label="item.name"
+              :value="item._id"
+            >
+            </el-option>
+          </el-select>
+        </el-form-item>
         <el-form-item label="名称">
           <el-input v-model="formModel.name"></el-input>
         </el-form-item>
         <el-form-item>
-          <el-button type="primary" @click="onSubmit">立即创建</el-button>
+          <el-button type="primary" @click="onSubmit">保存</el-button>
           <el-button>取消</el-button>
         </el-form-item>
       </el-form>
@@ -37,16 +54,18 @@ export default {
         name: "",
       },
       rules: {},
+      options: [],
     };
   },
   mounted() {
     this.id && this.fetch();
+    this.fetchParent();
   },
   methods: {
     async onSubmit() {
       const { status } = this.id
         ? await this.$http.put(`categroies/${this.id}`, this.formModel)
-        : await this.$http.post(`categroies/add`, this.formModel);
+        : await this.$http.post(`categroies`, this.formModel);
       if (status === 200) {
         this.$message({
           message: "新建成功",
@@ -58,6 +77,10 @@ export default {
     async fetch() {
       const res = await this.$http.get(`/categroies/${this.id}`);
       this.formModel = res.data;
+    },
+    async fetchParent() {
+      const res = await this.$http.get(`/categroies`);
+      this.options = res.data;
     },
   },
 };

@@ -1,5 +1,4 @@
 module.exports = {
-  FETCH_CATE: `/categroies/list`,
-  SAVA_CATE: `/categroies/add`,
-  FIND_UPDATE_CATE: `/categroies/:id`,
+  FETCH_CREATE: `/categroies`,
+  FIND_UPDATE: `/categroies/:id`,
 };
