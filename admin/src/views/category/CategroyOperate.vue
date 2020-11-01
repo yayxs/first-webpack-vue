@@ -2,7 +2,7 @@
   <div>
     <el-card shadow="always" :body-style="{ padding: '20px' }">
       <div slot="header">
-        <span>新建分类</span>
+        <span>{{ id ? "编辑" : "新建" }}分类</span>
       </div>
       <!-- card body -->
       <el-form
@@ -28,6 +28,9 @@
 <script>
 export default {
   name: "CategroyCreate",
+  props: {
+    id: {},
+  },
   data() {
     return {
       formModel: {
@@ -36,10 +39,25 @@ export default {
       rules: {},
     };
   },
+  mounted() {
+    this.id && this.fetch();
+  },
   methods: {
     async onSubmit() {
-      const res = await this.$http.post(`categroies`);
-      console.log(res);
+      const { status } = this.id
+        ? await this.$http.put(`categroies/${this.id}`, this.formModel)
+        : await this.$http.post(`categroies/add`, this.formModel);
+      if (status === 200) {
+        this.$message({
+          message: "新建成功",
+          type: "success",
+        });
+        this.$router.push(`/category/list`);
+      }
+    },
+    async fetch() {
+      const res = await this.$http.get(`/categroies/${this.id}`);
+      this.formModel = res.data;
     },
   },
 };

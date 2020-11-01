@@ -1,6 +1,7 @@
 const Main = () => import("./Main.vue");
 
-const CategroyCreate = () => import("../category/CategroyCreate.vue");
+const CategroyOperate = () => import("../category/CategroyOperate.vue");
+const CategoryList = () => import("../category/CategroyList.vue");
 export default {
   path: "/",
   name: "main",
@@ -9,7 +10,18 @@ export default {
     {
       path: "/category/create",
       name: "categoryCreate",
-      component: CategroyCreate,
+      component: CategroyOperate,
+    },
+    {
+      path: "/category/edit/:id",
+      name: "categoryEdit",
+      component: CategroyOperate,
+      props: true,
+    },
+    {
+      path: "/category/list",
+      name: "categoryList",
+      component: CategoryList,
     },
   ],
 };
