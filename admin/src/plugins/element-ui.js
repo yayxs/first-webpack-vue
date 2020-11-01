@@ -16,8 +16,12 @@ import {
   Dropdown,
   DropdownMenu,
   DropdownItem,
+  Card,
+  Form,
+  FormItem,
+  Input,
 } from "element-ui";
-
+Vue.prototype.$ELEMENT = { size: "small", zIndex: 3000 };
 Vue.component(Button.name, Button);
 Vue.component(Select.name, Select);
 Vue.use(Table);
@@ -33,6 +37,10 @@ Vue.use(Dropdown);
 Vue.use(DropdownMenu);
 Vue.use(DropdownItem);
 Vue.use(Header);
+Vue.use(Card);
+Vue.use(Form);
+Vue.use(FormItem);
+Vue.use(Input);
 /* 或写为
  * Vue.use(Button)
  * Vue.use(Select)

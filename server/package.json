@@ -8,5 +8,10 @@
   },
   "repository": "https://github.com/yayxs/node-vue-starter",
   "author": "yayxs",
-  "license": "MIT"
+  "license": "MIT",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^5.0.0-alpha.8",
+    "mongoose": "^5.10.11"
+  }
 }
