@@ -32,6 +32,7 @@
 </template>
 
 <script>
+import { parseTime } from '@/utils'
 export default {
   name: "CategoryList",
   data() {
@@ -59,6 +60,10 @@ export default {
   methods: {
     init() {
       this.fetch();
+      this.text()
+    },
+    text(){
+      console.log(parseTime('1507619996523'))  
     },
     async fetch() {
       const res = await this.$http.get(`categroies`);
