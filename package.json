@@ -1,0 +1,19 @@
+{
+  "name": "first-webpack-vue",
+  "version": "0.1.0",
+  "main": "index.js",
+  "repository": "https://github.com/yayxs/first-webpack-vue.git",
+  "description": "Set up a Vue project with webpack from 0",
+  "author": "yayxs",
+  "license": "MIT",
+  "scripts": {
+    "build": "webpack --config ./webpack.config.js"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.12.10",
+    "@babel/preset-env": "^7.12.10",
+    "babel-loader": "^8.2.2",
+    "webpack": "^5.10.0",
+    "webpack-cli": "^4.2.0"
+  }
+}

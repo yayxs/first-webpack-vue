@@ -22,8 +22,7 @@
               >编辑</el-button
             >
             <el-button type="text" size="small" @click="handleDel(scope.row)"
-              >删除</el-button
-            >
+              >删除</el-button>
           </template>
         </el-table-column>
       </el-table>
@@ -32,7 +31,7 @@
 </template>
 
 <script>
-import { parseTime } from '@/utils'
+import { parseTime } from "@/utils";
 export default {
   name: "CategoryList",
   data() {
@@ -60,10 +59,10 @@ export default {
   methods: {
     init() {
       this.fetch();
-      this.text()
+      this.text();
     },
-    text(){
-      console.log(parseTime('1507619996523'))  
+    text() {
+      console.log(parseTime("1507619996523"));
     },
     async fetch() {
       const res = await this.$http.get(`categroies`);
