@@ -1,20 +1,34 @@
 <template>
-  <div id="app">
-    <router-view></router-view>
-  </div>
+<div class="app-container">
+  <span>App</span>
+</div>
 </template>
 
 <script>
-export default {
-  name: "App",
-  components: {},
-};
-</script>
+import logoImg from './assets/images/logo.png';
+// import svgImg from './icons/svg/dashboard.svg';
+// import  './styles/test.css'
 
-<style>
-html,
-body {
-  margin: 0;
-  padding: 0;
+import  './styles/test.scss';
+export default {
+  name:"App",
+data() {
+return {
+
+}
+},
+methods: {
+  testEs6(){
+    console.log(`test es6`)
+  }
+},
+mounted() {
+
+}
+}
+</script>
+<style scoped lang="scss">
+span{
+  color: pink;
 }
 </style>

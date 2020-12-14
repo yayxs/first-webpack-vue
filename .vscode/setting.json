@@ -1,15 +1,32 @@
 {
-"editor.formatOnSave": true,
-"editor.codeActionsOnSave": {
+  "editor.tabSize": 2,
+  "editor.formatOnSave": true,
+    "editor.codeActionsOnSave": {
     "source.fixAll.stylelint": true,
     "source.fixAll.eslint": true
   },
-  "editor.defaultFormatter": "esbenp.prettier-vscode",
-  "[javascript]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  "editor.formatOnPaste": true,
+  "editor.quickSuggestions": {
+    "strings": true
   },
-"javascript.format.enable": true,
-"[json]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
+   // 在style样式中, 使用缩进, 缩进是2个空格
+   "vetur.format.styleInitialIndent": true,
+   // 在script样式中, 使用缩进, 缩进2个空格
+   "vetur.format.scriptInitialIndent": true,
+  "vetur.format.defaultFormatterOptions": {
+    // 用于template部分的格式化
+    "prettyhtml": {
+      // 超过80个字符的标签换行显示
+      "printWidth": 80
+    },
+    // 用于script部分的格式化
+    "prettier": {
+      // 使用单引号
+      "singleQuote": true,
+      // 不使用;号
+      "semi": false,
+      "proseWrap": "never",
+      "printWidth": 80
+    }
   }
 }
