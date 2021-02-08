@@ -1,16 +1,18 @@
 {
-  "name": "first-webpack-vue",
-  "version": "0.1.0",
+  "name": "webpack-config",
+  "version": "0.2.0",
   "repository": {
     "type": "git",
-    "url": "https://github.com/yayxs/first-webpack-vue.git"
+    "url": "https://github.com/yayxs/webpack-config.git"
   },
-  "description": "Set up a Vue project with webpack from 0",
+  "description": "Use webpack to build a front-end development environment",
   "author": "yayxs",
   "license": "MIT",
   "scripts": {
+    "help": "webpack --help",
+    "build": "webpack",
+    "serve": "webpack-dev-server",
     "dev": "webpack serve --config ./build/webpack.dev.js",
-    "build": "webpack --config ./build/webpack.prod.js",
     "start": "webpack serve"
   },
   "devDependencies": {
@@ -29,9 +31,9 @@
     "url-loader": "^4.1.1",
     "vue-loader": "^15.9.5",
     "vue-template-compiler": "^2.6.12",
-    "webpack": "^5.10.1",
-    "webpack-cli": "^4.2.0",
-    "webpack-dev-server": "^3.11.0",
+    "webpack": "^5.21.2",
+    "webpack-cli": "^4.5.0",
+    "webpack-dev-server": "^3.11.2",
     "webpack-merge": "^5.7.0"
   },
   "dependencies": {

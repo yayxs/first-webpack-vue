@@ -1,78 +1,24 @@
-// node的path模块
+"use strict";
+// webpack 的配置其实是一个 Node 的脚本，这个脚本对外暴露一个配置对象，
+// webpack 通过这个对象来读取相关的一些配置。
 const path = require("path");
 
-const VueLoaderPlugin = require("vue-loader/lib/plugin");
-
-const HtmlWebpackPlugin = require('html-webpack-plugin')
-
-const { CleanWebpackPlugin } = require('clean-webpack-plugin')
-
-const webpack = require('webpack')
-
-const pathResolve = (str) => path.resolve(__dirname, str);
-
 module.exports = {
-  mode: "development",
-  entry: "./src/main.js",
-  // 出口
-  output: {
-    filename: "app.js",
-    path: pathResolve("./dist"),
-  },
+  mode: "development", // 指定构建模式
+  entry: "./src/index.js",
+  context: path.resolve(__dirname),
   devServer: {
-    contentBase: './dist',
-    // 自动打开浏览器
-    open: true,
-    // 启用热模块替换
-  hot: true
+    contentBase: path.resolve(__dirname, "dist"), // 开发服务器启动路径
+  },
+  output: {
+    path: path.resolve(__dirname, "dist"), // 指定构建生成文件所在路径
+    filename: "bundle.js",
+    publicPath: "pathOrUrlWhenProductionBuild",
   },
   module: {
-    rules: [
-      // ... 其它规则
-      {
-        test: /\.vue$/,
-        loader: "vue-loader",
-      },
-      {
-        test: /\.(png|jpe?g|gif)$/i,
-        loader: "file-loader",
-        options: {
-          name: "[name].[ext]",
-        },
-      },
-      {
-        test: /\.(png|jpg|gif)$/i,
-        use: [
-          {
-            loader: 'url-loader',
-            options: {
-              limit: 8192,
-            },
-          },
-        ],
-      },
-      {
-        test:'/\.css$/',
-        use:['"style-loader", "css-loader"']
-      },
-      {
-        test: /\.s[ac]ss$/i,
-        use: ["style-loader", "css-loader","postcss-loader", "sass-loader",],
-      },
-    ],
+    rules: [],
   },
-  plugins: [
-    // 请确保引入这个插件！
-    new VueLoaderPlugin(),
-    new HtmlWebpackPlugin({
-      template: './index.html'
-    }),
-    new CleanWebpackPlugin(),
-    new webpack.HotModuleReplacementPlugin()
-  ],
-  resolve: {
-    alias: {
-      vue: "vue/dist/vue.js",
-    },
-  },
+  resolve: {},
+  devtool: "source-map",
+  plugins: [],
 };
