@@ -1,7 +1,7 @@
 {
   "editor.tabSize": 2,
   "editor.formatOnSave": true,
-    "editor.codeActionsOnSave": {
+  "editor.codeActionsOnSave": {
     "source.fixAll.stylelint": true,
     "source.fixAll.eslint": true
   },
@@ -9,10 +9,10 @@
   "editor.quickSuggestions": {
     "strings": true
   },
-   // 在style样式中, 使用缩进, 缩进是2个空格
-   "vetur.format.styleInitialIndent": true,
-   // 在script样式中, 使用缩进, 缩进2个空格
-   "vetur.format.scriptInitialIndent": true,
+  // 在style样式中, 使用缩进, 缩进是2个空格
+  "vetur.format.styleInitialIndent": true,
+  // 在script样式中, 使用缩进, 缩进2个空格
+  "vetur.format.scriptInitialIndent": true,
   "vetur.format.defaultFormatterOptions": {
     // 用于template部分的格式化
     "prettyhtml": {

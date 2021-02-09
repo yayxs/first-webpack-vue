@@ -26,26 +26,26 @@ export function parseTime(time, cFormat) {
     console.log("最终的time", time);
     date = new Date(time);
   }
-  date = new Date()
-  
-  const formatObj = {
-      y:date.getFullYear(),
-      m:date.getMonth() +1,
-      d:date.getDate(),
-      h:date.getHours(),
-      i:date.getMinutes(),
-      s:date.getSeconds(),
-      a:date.getDay(),
-  };
-  console.log(formatObj)
-  const time_str = format.replace(/{([ymdhisa])+}/g,(res,key)=>{
-    console.log(res)
-    const val = formatObj[key]
-    if(key === 'a'){
-        return ['日','一','二','三','四','五','六'][val]
-    }
-    return val.toString().padStart(2,'0')
-  })
+  date = new Date();
 
-  return time_str
+  const formatObj = {
+    y: date.getFullYear(),
+    m: date.getMonth() + 1,
+    d: date.getDate(),
+    h: date.getHours(),
+    i: date.getMinutes(),
+    s: date.getSeconds(),
+    a: date.getDay(),
+  };
+  console.log(formatObj);
+  const time_str = format.replace(/{([ymdhisa])+}/g, (res, key) => {
+    console.log(res);
+    const val = formatObj[key];
+    if (key === "a") {
+      return ["日", "一", "二", "三", "四", "五", "六"][val];
+    }
+    return val.toString().padStart(2, "0");
+  });
+
+  return time_str;
 }

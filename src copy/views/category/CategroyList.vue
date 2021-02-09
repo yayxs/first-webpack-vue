@@ -5,7 +5,7 @@
         <span>分类列表</span>
       </div>
       <!-- card body -->
-      <el-table :data="tableData" border stripe style="width:100%">
+      <el-table :data="tableData" border stripe style="width: 100%">
         <el-table-column
           v-for="(col, index) in columns"
           :prop="col.prop"
@@ -22,7 +22,8 @@
               >编辑</el-button
             >
             <el-button type="text" size="small" @click="handleDel(scope.row)"
-              >删除</el-button>
+              >删除</el-button
+            >
           </template>
         </el-table-column>
       </el-table>
